@@ -29,6 +29,17 @@ public class QueryProcessor {
                 total*= Integer.parseInt(m.group());
             }
             return Integer.toString(total);
+        } else if (query.toLowerCase().contains("minus")){
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(query.split(":")[1]);
+            int total = 0;
+            m.find();
+            total += Integer.parseInt(m.group());
+            m.find();
+            total -= Integer.parseInt(m.group());
+            return Integer.toString(total);
+        } else if (query.toLowerCase().contains("minister")) {
+            return "2017";
         }
         return "";
     }
