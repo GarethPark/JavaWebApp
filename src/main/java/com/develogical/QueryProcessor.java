@@ -19,6 +19,14 @@ public class QueryProcessor {
                             .split(":")[2]
                             .split(","))
                     .max(Comparator.comparingInt(Integer::parseInt)).get();
+        } else if (query.toLowerCase().contains("multiplied")){
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(query.split(":")[1]);
+            int total = 1;
+            while(m.find()) {
+                total*= Integer.parseInt(m.group());
+            }
+            return Integer.toString(total);
         }
         return "";
     }
