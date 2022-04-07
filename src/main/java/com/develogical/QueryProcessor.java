@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class QueryProcessor {
 
     public String process(String query) {
