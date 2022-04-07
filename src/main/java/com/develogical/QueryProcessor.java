@@ -12,6 +12,13 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.toLowerCase().contains("what is your name")){
             return "Gareth & Lucas";
+        } else if (query.toLowerCase().contains("which of the following numbers is the largest")){
+            return Arrays.stream(
+                    query
+                            .replaceAll("\\s+", "")
+                            .split(":")[2]
+                            .split(","))
+                    .max(Comparator.comparingInt(Integer::parseInt)).get();
         }
         return "";
     }
