@@ -40,6 +40,16 @@ public class QueryProcessor {
             return Integer.toString(total);
         } else if (query.toLowerCase().contains("minister")) {
             return "2017";
+        } else if (query.toLowerCase().contains("square")) {
+            return Arrays.stream(
+                    query
+                            .replaceAll("\\s+", "")
+                            .split(":")[2]
+                            .split(",")).filter(value -> {
+                double sq = Math.sqrt(Integer.parseInt(value));
+                double cb = Math.cbrt(Integer.parseInt(value));
+                return (sq - Math.floor(sq)) == 0 && (cb - Math.floor(cb)) == 0;
+            }).collect(Collectors.joining(","));
         }
         return "";
     }

@@ -52,6 +52,10 @@ public class QueryProcessorTest {
 //    }
 
     //  which of the following numbers is both a square and a cube: 713, 2116
+    @Test
+    public void returnsSquareAndCube() {
+        assertThat(queryProcessor.process("416be190:which of the following numbers is both a square and a cube: 713, 64"), is("64"));
+    }
 
     //  what is 7 minus 8
     @Test
